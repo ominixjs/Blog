@@ -19,11 +19,12 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
     "ejs": "^5.0.2",
-    "env": "^0.0.2",
     "express": "^5.2.1",
-    "mysql": "^2.18.1"
+    "mysql2": "^3.22.3",
+    "router": "^2.2.0",
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
