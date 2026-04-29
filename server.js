@@ -1,3 +1,5 @@
 import app from "./app.js";
 
-app.listen(8080, () => console.log("Site rodando"));
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log("Site rodando"));

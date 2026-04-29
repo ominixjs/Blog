@@ -1,5 +1,7 @@
 import express from "express";
 import ejs from "ejs";
+
+//===================== Configs ====================
 import connection from "./src/config/connection.js";
 
 //========================= Routes ========================
