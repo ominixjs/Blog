@@ -38,19 +38,60 @@ router.post("/categories/save", (req, res) => {
 
 //============ Tabela de categorias ===========
 router.get("/admin/categories", (req, res) => {
-    CategoryModel.findAll().then((categories) => {
-        res.render("admin/category/index", { categories });
-    });
+    CategoryModel.findAll()
+        .then((categories) => {
+            res.render("admin/category/index", { categories });
+        })
+        .catch((err) => res.redirect("/home"));
 });
 
+//============== Autentica e deleta categoria =============
 router.post("/category/delete", (req, res) => {
-    const itemId = req.body.id;
+    const categoryId = req.body.id;
 
-    if (itemId === undefined) return res.redirect("/admin/categories");
+    if (categoryId === undefined) return res.redirect("/admin/categories");
 
-    CategoryModel.destroy({ where: { id: itemId } }).then(() =>
-        res.redirect("/admin/categories"),
-    );
+    //=============== Busca pela categoria e deleta ===============
+    CategoryModel.destroy({ where: { id: categoryId } })
+        .then(() => res.redirect("/admin/categories"))
+        .catch((err) => res.redirect("/home"));
 });
 
+//====================== Edita categoria =============
+router.get("/admin/category/edit/:id", (req, res) => {
+    const categoryId = req.params.id;
+
+    if (isNaN(categoryId)) return res.redirect("/admin/categories");
+
+    //======= Busca pela categoria e retorna os dados =====
+    CategoryModel.findByPk(categoryId)
+        .then((category) => {
+            if (categoryId === undefined)
+                return res.redirect("/admin/categories");
+
+            res.render("admin/category/edit", {
+                id: category.id,
+                title: category.title,
+                slug: category.slug,
+                created: category.createdAt,
+                updated: category.updatedAt,
+            });
+        })
+        .catch((err) => res.redirect("/home"));
+});
+
+//=============== Edita categoria =============
+router.post("/category/update", (req, res) => {
+    const { id, title, slug, createdAt, updatedAt } = req.body;
+
+    //======== Edita dados da categoria =============
+    CategoryModel.update(
+        { title: title, slug: slugify(title) },
+        { where: { id: id } },
+    )
+        .then(() => res.redirect("/admin/categories"))
+        .catch((err) => res.redirect("/home"));
+});
+
+//====================
 export default router;

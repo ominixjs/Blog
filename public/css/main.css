@@ -10,10 +10,14 @@ body {
 }
 
 p,
+label {
+    letter-spacing: -0.5px;
+}
+
+p,
 a,
 label,
 input {
-    letter-spacing: -1px;
     color: var(--color-txt);
     text-decoration: none;
 

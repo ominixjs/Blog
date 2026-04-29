@@ -81,11 +81,13 @@
                         <td><strong><%= category.id %></strong></td>
                         <td><strong><%= category.title %></strong></td>
                         <td><span class="badge"><%= category.slug %></span></td>
-                        <td>15/01/2024 14:30</td>
-                        <td>20/01/2024 09:15</td>
+                        <td><%= formatDateTime(category.createdAt) %></td>
+                        <td><%= formatDateTime(category.updatedAt) %></td>
                         <td>
                             <div class="action-buttons">
-                                <button type="submit" class="btn-edit">✏️ Editar</button>
+                                
+                                <a href="/admin/category/edit/<%= category.id %>" type="submit" class="btn-edit">✏️ Editar</a>
+                               
                                 <form action="/category/delete" method="post" onsubmit="actionConfirm(event, this)">
                                     <input type="hidden" name="id" value="<%= category.id %>">
                                     <button type="submit" class="btn-delete" >🗑️ Excluir</button>

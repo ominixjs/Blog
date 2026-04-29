@@ -1,0 +1,73 @@
+<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<section class="container">
+    <div class="content">
+        <!-- Formulário -->
+        <div class="form-container">
+            <div class="form-title">Edite sua categoria</div>
+            <form action="/category/update" method="post" id="contentForm">
+                <input type="hidden" name="id" value="<%= id %>" />
+
+                <div class="form-group">
+                    <label for="title">Título *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Digite o título"
+                        value="<%= title %>"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="slug">Slug *</label>
+                    <input
+                        type="text"
+                        id="slug"
+                        name="slug"
+                        placeholder="exemplo-de-slug"
+                        value="<%= slug %>"
+                        disabled
+                    />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="createdAt">Data de Criação</label>
+                        <input
+                            type="text"
+                            id="createdAt"
+                            name="createdAt"
+                            value="<%= formatDateTime(created) %>"
+                            disabled
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updatedAt">Última Modificação</label>
+                        <input
+                            type="text"
+                            id="updatedAt"
+                            name="updatedAt"
+                            value="<%= formatDateTime(updated) %>"
+                            disabled
+                        />
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px">
+                    <button type="submit" class="btn btn-primary">
+                        ✏️ Adicionar
+                    </button>
+                    <a
+                        href="/admin/categories"
+                        class="btn btn-secondary"
+                        style="display: block"
+                    >
+                        ❌ Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<%- include('../../layouts/footer') %>
