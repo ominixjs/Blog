@@ -12,4 +12,7 @@ const CategoryModel = connection.define("categories", {
   },
 });
 
+//====== Criar relação no DB ==========
+// CategoryModel.sync({ force: true });
+
 export default CategoryModel;

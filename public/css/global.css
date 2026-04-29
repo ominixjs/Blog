@@ -1,3 +1,6 @@
-@import url("./main.css");
 @import url("./link.css");
+@import url("./colors.css");
+@import url("./main.css");
+@import url("./navbar.css");
 @import url("./homepage.css");
+@import url("./categoriepage.css");

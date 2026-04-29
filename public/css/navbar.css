@@ -1,0 +1,63 @@
+header {
+  margin-bottom: 2rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 20%;
+  border-bottom: 2px solid var(--color-secundary);
+}
+
+.navbar > a {
+  width: 70px;
+  height: 70px;
+}
+
+.navbar .logo {
+  width: inherit;
+  height: inherit;
+}
+
+.navbar .nav-link {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar .nav-link li a {
+  font-weight: 500;
+}
+
+.navbar .nav-link li a:hover {
+  color: var(--color-secundary);
+}
+
+.navbar .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar .nav-menu > div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.navbar .nav-menu > div p {
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--color-primary);
+  text-align: end;
+}
+
+.navbar .nav-menu > div p span.start {
+  font-size: 0.8em;
+  color: var(--color-txt);
+}
+
+.navbar .nav-menu .user-image {
+  width: 60px;
+  height: 60px;
+}

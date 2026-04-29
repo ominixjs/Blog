@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import connection from "../config/connection.js";
+import CategoryModel from "./CategoryModel.js";
 
 const ArticleMoodel = connection.define("articles", {
   title: {
@@ -12,5 +13,13 @@ const ArticleMoodel = connection.define("articles", {
     allowNull: false,
   },
 });
+
+// Relacionamento 1 - P - N
+CategoryModel.hasMany(ArticleMoodel);
+// Relacionamento 1 - P - 1
+ArticleMoodel.belongsTo(CategoryModel);
+
+//====== Criar relação no DB ==========
+// ArticleMoodel.sync({ force: true });
 
 export default ArticleMoodel;

@@ -24,7 +24,8 @@
     "express": "^5.2.1",
     "mysql2": "^3.22.3",
     "router": "^2.2.0",
-    "sequelize": "^6.37.8"
+    "sequelize": "^6.37.8",
+    "slugify": "^1.6.9"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

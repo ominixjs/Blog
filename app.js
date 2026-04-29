@@ -2,9 +2,13 @@ import express from "express";
 import ejs from "ejs";
 import connection from "./src/config/connection.js";
 
-//================= Router =========================
-import CategorieRouter from "./src/router/CategorieRouter.js";
-import ArticlesRouter from "./src/router/ArticleRouter.js";
+//========================= Routes ===========================
+import CategoryRouter from "./src/routes/CategoryRoute.js";
+import ArticleRouter from "./src/routes/ArticleRoute.js";
+
+//======================== Models =========================
+import CategoryModel from "./src/models/CategoryModel.js";
+import ArticleMoodel from "./src/models/ArticleModel.js";
 
 //====================
 const app = express();
@@ -21,17 +25,17 @@ app.set("view engine", "ejs");
 
 //======= Conexão Database =======
 connection
-  .authenticate()
-  .then(() => console.log("Conexão feita com sucesso!"))
-  .catch(() => console.log("Conexão falhou"));
+    .authenticate()
+    .then(() => console.log("Conexão feita com sucesso!"))
+    .catch(() => console.log("Conexão falhou"));
 
 //============= Router ============
-app.use(CategorieRouter);
-app.use(ArticlesRouter);
+app.use(CategoryRouter);
+app.use(ArticleRouter);
 
 //=========== Homepage ============
 app.get("/home", (req, res) => {
-  res.render("index");
+    res.render("index");
 });
 
 //== init ssserver ==

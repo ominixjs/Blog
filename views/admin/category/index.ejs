@@ -1,0 +1,112 @@
+<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<section class="container">
+    <h1>Tabela de categorias</h1>
+    <br />
+    <div class="content">
+        <!-- Formulário -->
+        <!-- <div class="form-container">
+            <div class="form-title">➕ Adicionar Novo Item</div>
+            <form id="contentForm">
+                <div class="form-group">
+                    <label for="title">Título *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Digite o título"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="slug">Slug *</label>
+                    <input
+                        type="text"
+                        id="slug"
+                        name="slug"
+                        placeholder="exemplo-de-slug"
+                    />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="createdAt">Data de Criação *</label>
+                        <input
+                            type="datetime-local"
+                            id="createdAt"
+                            name="createdAt"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="updatedAt">Última Modificação *</label>
+                        <input
+                            type="datetime-local"
+                            id="updatedAt"
+                            name="updatedAt"
+                        />
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px">
+                    <button type="submit" class="btn btn-primary">
+                        ➕ Adicionar
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        style="display: none"
+                    >
+                        ❌ Cancelar
+                    </button>
+                </div>
+            </form>
+        </div> -->
+
+        <!-- Tabela -->
+        <div class="table-wrapper">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Slug</th>
+                        <th>Data de Criação</th>
+                        <th>Última Modificação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <% categories.forEach(category => { %>
+                       <tr>
+                        <td><strong><%= category.id %></strong></td>
+                        <td><strong><%= category.title %></strong></td>
+                        <td><span class="badge"><%= category.slug %></span></td>
+                        <td>15/01/2024 14:30</td>
+                        <td>20/01/2024 09:15</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">✏️ Editar</button>
+                                <button class="btn-delete">🗑️ Excluir</button>
+                            </div>
+                        </td>
+                    </tr> 
+                    <% }) %>
+                    <!-- Exemplo de linha de dados -->
+                    <!-- <tr>
+                        <td><strong>Exemplo de Título</strong></td>
+                        <td><span class="badge">exemplo-de-titulo</span></td>
+                        <td>15/01/2024 14:30</td>
+                        <td>20/01/2024 09:15</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit">✏️ Editar</button>
+                                <button class="btn-delete">🗑️ Excluir</button>
+                            </div>
+                        </td>
+                    </tr> -->
+                                   </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<%- include('../../layouts/footer') %>

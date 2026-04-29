@@ -1,0 +1,16 @@
+<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<section class="container">
+    <h1>Crie aqui uma categoria</h1>
+    <form action="/categories/save" method="post">
+        <label for="titleCategory">
+            <input
+                type="text"
+                name="titleCategory"
+                id="title_category"
+                placeholder="Titulo da categoria"
+            />
+        </label>
+        <button type="submit" class="btn-default">Salvar</button>
+    </form>
+</section>
+<%- include('../../layouts/footer') %>

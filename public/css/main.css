@@ -1,15 +1,28 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Work Sans", sans-serif;
+}
+
+body {
+    font-size: 1.1em;
 }
 
 p,
 a,
 label,
 input {
-  letter-spacing: -0.6px;
-  color: #272727;
+    letter-spacing: -1px;
+    color: var(--color-txt);
+    text-decoration: none;
+
+    transition: color 300ms ease;
+}
+
+a,
+i {
+    display: inline-flex;
 }
 
 h1,
@@ -17,7 +30,26 @@ h2,
 h3,
 h4,
 h5 {
-  letter-spacing: -1px;
-  line-height: 1.2;
-  color: #1b1b1b;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    color: #1b1b1b;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.btn-default {
+    border: 0;
+    padding: 0.6rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: var(--color-secundary);
+    color: white;
+    cursor: pointer;
 }
