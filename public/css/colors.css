@@ -1,7 +1,11 @@
 :root {
-  --color-primary: #4862e0;
-  --color-secundary: #7329ff;
-  --color-title: #232323;
-  --color-txt: #505050;
-  --color-light: #eeeeee;
+    --color-primary: #4862e0;
+    --color-secundary: #7329ff;
+    --color-title: #232323;
+    --color-txt: #505050;
+    --color-light: #eeeeee;
+    --color-success: #28a745;
+    --color-hover-success: #218838;
+    --color-danger: #dc3545;
+    --color-hover-danger: #c82333;
 }

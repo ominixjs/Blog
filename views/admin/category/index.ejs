@@ -1,8 +1,8 @@
 <%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
 <section class="container">
-    <h1>Tabela de categorias</h1>
-    <br />
     <div class="content">
+        <h1>Tabela de categorias</h1>
+        <br />
         <!-- Formulário -->
         <!-- <div class="form-container">
             <div class="form-title">➕ Adicionar Novo Item</div>
@@ -85,8 +85,11 @@
                         <td>20/01/2024 09:15</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-edit">✏️ Editar</button>
-                                <button class="btn-delete">🗑️ Excluir</button>
+                                <button type="submit" class="btn-edit">✏️ Editar</button>
+                                <form action="/category/delete" method="post" onsubmit="actionConfirm(event, this)">
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+                                    <button type="submit" class="btn-delete" >🗑️ Excluir</button>
+                                </form>
                             </div>
                         </td>
                     </tr> 
@@ -104,9 +107,19 @@
                             </div>
                         </td>
                     </tr> -->
-                                   </tbody>
+                </tbody>
             </table>
         </div>
     </div>
 </section>
 <%- include('../../layouts/footer') %>
+<script>
+    function actionConfirm(event, form) {
+    event.preventDefault();
+
+    const itemDelete = confirm("Deseja deletar esta categoria?");
+
+    if (itemDelete) form.submit();
+}
+
+</script>

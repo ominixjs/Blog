@@ -43,4 +43,14 @@ router.get("/admin/categories", (req, res) => {
     });
 });
 
+router.post("/category/delete", (req, res) => {
+    const itemId = req.body.id;
+
+    if (itemId === undefined) return res.redirect("/admin/categories");
+
+    CategoryModel.destroy({ where: { id: itemId } }).then(() =>
+        res.redirect("/admin/categories"),
+    );
+});
+
 export default router;

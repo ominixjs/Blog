@@ -2,11 +2,11 @@ import express from "express";
 import ejs from "ejs";
 import connection from "./src/config/connection.js";
 
-//========================= Routes ===========================
+//========================= Routes ========================
 import CategoryRouter from "./src/routes/CategoryRoute.js";
 import ArticleRouter from "./src/routes/ArticleRoute.js";
 
-//======================== Models =========================
+//======================== Models ========================
 import CategoryModel from "./src/models/CategoryModel.js";
 import ArticleMoodel from "./src/models/ArticleModel.js";
 
@@ -38,5 +38,5 @@ app.get("/home", (req, res) => {
     res.render("index");
 });
 
-//== init ssserver ==
+//== init server ==
 export default app;
