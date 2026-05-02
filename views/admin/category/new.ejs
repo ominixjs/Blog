@@ -1,16 +1,31 @@
 <%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
 <section class="container">
-    <h1>Crie aqui uma categoria</h1>
-    <form action="/categories/save" method="post">
-        <label for="titleCategory">
-            <input
-                type="text"
-                name="titleCategory"
-                id="title_category"
-                placeholder="Titulo da categoria"
-            />
-        </label>
-        <button type="submit" class="btn-default">Salvar</button>
-    </form>
+    <div class="form-header">
+        <div>
+            <h1>📝 Novo artigo</h1>
+            <p>Crie aqui seu artigo</p>
+        </div>
+    </div>
+
+    <div class="form-body">
+        <form action="/category/save" method="post" id="contentForm">
+            <div class="form-group">
+                <label for="title"> <i>📌</i> Título do Conteúdo </label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Digite um título atraente para seu conteúdo..."
+                    required
+                />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    💾 Salvar Conteúdo
+                </button>
+            </div>
+        </form>
+    </div>
 </section>
 <%- include('../../layouts/footer') %>

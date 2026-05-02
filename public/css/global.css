@@ -1,6 +1,37 @@
 @import url("./link.css");
 @import url("./colors.css");
+@import url("./templates/table.css");
+@import url("./templates/form.css");
+@import url("./templates/buttons.css");
+@import url("./templates/select.css");
+@import url("./templates/post.css");
+@import url("./templates/quillfonts.css");
 @import url("./main.css");
 @import url("./navbar.css");
 @import url("./homepage.css");
-@import url("./categorypage.css");
+
+/* de 1600px até 1051px */
+@media screen and (max-width: 1600px) and (min-width: 1051px) {
+    header .navbar {
+        padding-inline: 5%;
+    }
+
+    .container {
+        padding: 5%;
+    }
+}
+
+/* de 0 até 1051px */
+@media screen and (max-width: 1050px) {
+    header .navbar {
+        padding-inline: 5%;
+    }
+
+    header .navbar .nav-link {
+        display: none;
+    }
+
+    .container {
+        padding: 5%;
+    }
+}

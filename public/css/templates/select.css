@@ -1,0 +1,45 @@
+.custom-select {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.custom-select label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.custom-select select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #ffffff;
+    border: 2px solid var(--color-light);
+    border-radius: 8px;
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.3s ease;
+    color: var(--color-txt);
+}
+
+.custom-select select:hover {
+    border-color: var(--color-primary);
+}
+
+.custom-select select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-shadow-primary);
+}
+
+.custom-select .arrow {
+    position: absolute;
+    right: 16px;
+    top: calc(50% + 8px);
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #a0aec0;
+    font-size: 12px;
+}

@@ -2,13 +2,13 @@
 <section class="container">
     <div class="form-header">
         <div>
-            <h1>📝 Edite a categoria</h1>
-            <p>Edite aqui sua categoria</p>
+            <h1>📝 Edite artigo</h1>
+            <p>Crie aqui seu artigo</p>
         </div>
     </div>
 
     <div class="form-body">
-        <form action="/category/update" method="post" id="contentForm">
+        <form action="/article/update" method="post" id="contentForm">
             <input type="hidden" name="id" value="<%= id %>" />
 
             <div class="form-group">
@@ -35,6 +35,21 @@
                 />
             </div>
 
+            <div class="custom-select">
+                <label>📌 Select básico</label>
+                <select name="category">
+                    <option value="">Selecione uma opção</option>
+                    <% categories.forEach(category => {%>
+                        <% if (category.id == categoryId) { %>
+                            <option value="<%= category.id %>" selected><%= category.title %></option>
+                            <% return %>
+                        <% } %>
+                        <option value="<%= category.id %>"><%= category.title %></option>
+                    <%})%>
+                </select>
+                <div class="arrow">▼</div>
+            </div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label for="createdAt">Data de Criação</label>
@@ -58,13 +73,28 @@
                     />
                 </div>
             </div>
+
+            <div class="form-group">
+                <label> <i>✏️</i> Conteúdo Principal </label>
+                <div class="editor" id="editor" style="height: 600px">
+                    <%- body %>
+                </div>
+                <input type="hidden" name="content" id="content" />
+            </div>
+
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">
                     💾 Salvar Conteúdo
                 </button>
-                <a href="/admin/categories" class="btn btn-secondary">
+                <a href="/admin/articles" class="btn btn-secondary">
                     ❌ Cancelar
                 </a>
+                <button type="button" id="clearBtn" class="btn btn-outline">
+                    🗑️ Limpar
+                </button>
+                <button type="button" id="previewBtn" class="btn btn-secondary">
+                    👁️ Visualizar
+                </button>
             </div>
         </form>
 
@@ -82,5 +112,4 @@
         </div>
     </div>
 </section>
-
 <%- include('../../layouts/footer') %>

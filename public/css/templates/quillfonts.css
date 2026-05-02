@@ -1,0 +1,44 @@
+/* ===== FONTES (APLICAÇÃO NO TEXTO) ===== */
+.ql-font-worksans {
+    font-family: "Work Sans", sans-serif;
+}
+
+.ql-font-roboto {
+    font-family: "Roboto", sans-serif;
+}
+
+.ql-font-opensans {
+    font-family: "Open Sans", sans-serif;
+}
+
+/* ===== ITENS DO DROPDOWN ===== */
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="worksans"]::before {
+    content: "Work Sans";
+    font-family: "Work Sans", sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto"]::before {
+    content: "Roboto";
+    font-family: "Roboto", sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="opensans"]::before {
+    content: "Open Sans";
+    font-family: "Open Sans", sans-serif;
+}
+
+/* ===== TEXTO SELECIONADO (O QUE APARECE NO BOTÃO) ===== */
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="worksans"]::before {
+    content: "Work Sans";
+    font-family: "Work Sans", sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto"]::before {
+    content: "Roboto";
+    font-family: "Roboto", sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="opensans"]::before {
+    content: "Open Sans";
+    font-family: "Open Sans", sans-serif;
+}

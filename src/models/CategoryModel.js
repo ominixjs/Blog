@@ -1,15 +1,15 @@
 import { Sequelize } from "sequelize";
-import connection from "../config/connection.js";
+import connection from "../db/connection.js";
 
 const CategoryModel = connection.define("categories", {
-  title: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  slug: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    slug: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
 });
 
 //====== Criar relação no DB ==========

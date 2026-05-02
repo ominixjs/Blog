@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
-//=== .env =====
 dotenv.config();
 
 const connection = new Sequelize(
@@ -11,6 +10,7 @@ const connection = new Sequelize(
     {
         host: process.env.DB_HOST_NAME,
         dialect: process.env.DB_NAME,
+        timezone: "-03:00",
     },
 );
 

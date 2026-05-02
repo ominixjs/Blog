@@ -1,0 +1,67 @@
+<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<section class="container">
+    <div class="form-header">
+        <div>
+            <h1>📝 Novo artigo</h1>
+            <p>Crie aqui seu artigo</p>
+        </div>
+    </div>
+
+    <div class="form-body">
+        <form action="/article/save" method="post" id="contentForm">
+            <div class="form-group">
+                <label for="title"> <i>📌</i> Título do Conteúdo </label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Digite um título atraente para seu conteúdo..."
+                    required
+                />
+            </div>
+
+            <div class="custom-select">
+                <label>📌 Categoria</label>
+                <select name="category">
+                    <option value="">Selecione uma opção</option>
+                    <% categories.forEach(category => {%>
+                        <option value="<%= category.id %>" ><%= category.title %></option>
+                    <%})%>
+                </select>
+                <div class="arrow">▼</div>
+            </div>
+
+            <div class="form-group">
+                <label> <i>✏️</i> Conteúdo Principal </label>
+                <div class="editor" id="editor" style="height: 600px"></div>
+                <input type="hidden" name="content" id="content" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    💾 Salvar Conteúdo
+                </button>
+                <button type="button" id="clearBtn" class="btn btn-outline">
+                    🗑️ Limpar
+                </button>
+                <button type="button" id="previewBtn" class="btn btn-secondary">
+                    👁️ Visualizar
+                </button>
+            </div>
+        </form>
+
+        <div id="previewSection" class="preview-section">
+            <h3 class="preview-title" id="previewTitle"></h3>
+            <div class="preview-content" id="previewContent"></div>
+            <button
+                type="button"
+                id="closePreview"
+                class="btn btn-outline"
+                style="margin-top: 15px"
+            >
+                Fechar Preview
+            </button>
+        </div>
+    </div>
+</section>
+<%- include('../../layouts/footer') %>

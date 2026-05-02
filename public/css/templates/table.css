@@ -1,0 +1,81 @@
+/* Tabela */
+.table-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+td.title, td.slug {
+    max-width: 16ch;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+    white-space: wrap;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-edit {
+    background: var(--color-success);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: var(--color-hover-success);
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: var(--color-danger);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: var(--color-hover-danger);
+    transform: scale(1.05);
+}
+
+.table-badge {
+    background: #e0e0e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .header h1 {
+        font-size: 1.8em;
+    }
+}

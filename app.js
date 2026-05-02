@@ -1,8 +1,8 @@
 import express from "express";
 import ejs from "ejs";
 
-//===================== Configs ====================
-import connection from "./src/config/connection.js";
+//================ Database ====================
+import connection from "./src/db/connection.js";
 
 //========================= Routes ========================
 import CategoryRouter from "./src/routes/CategoryRoute.js";
@@ -10,7 +10,7 @@ import ArticleRouter from "./src/routes/ArticleRoute.js";
 
 //======================== Models ========================
 import CategoryModel from "./src/models/CategoryModel.js";
-import ArticleMoodel from "./src/models/ArticleModel.js";
+import ArticleModel from "./src/models/ArticleModel.js";
 
 //====================
 const app = express();
@@ -64,7 +64,25 @@ app.use(ArticleRouter);
 
 //=========== Homepage ============
 app.get("/home", (req, res) => {
-    res.render("index");
+    ArticleModel.findAll()
+        .then((articles) => {
+            CategoryModel.findAll()
+                .then((categories) => {
+                    res.render("index", { articles, categories });
+                })
+                .catch((err) => res.redirect("/err"));
+        })
+        .catch((err) => res.redirect("/err"));
+});
+
+//=========== Viualização de post ==============
+app.get("/:slug", (req, res) => {
+    const slug = req.params.slug;
+
+    //==================== Busca pelo post ====================
+    ArticleModel.findOne({ where: { slug } })
+        .then((article) => res.render("article", { article }))
+        .catch((err) => res.redirect("/home"));
 });
 
 //== init server ==
