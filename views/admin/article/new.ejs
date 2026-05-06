@@ -1,5 +1,6 @@
-<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
 <section class="container">
+        <div class="form-container">
     <div class="form-header">
         <div>
             <h1>📝 Novo artigo</h1>
@@ -20,20 +21,20 @@
                 />
             </div>
 
-            <div class="custom-select">
-                <label>📌 Categoria</label>
-                <select name="category">
+             <div class="form-group select-wrapper">
+                <label>📂 Categorias</label>
+                 <select name="category" required>
                     <option value="">Selecione uma opção</option>
+
                     <% categories.forEach(category => {%>
                         <option value="<%= category.id %>" ><%= category.title %></option>
                     <%})%>
                 </select>
-                <div class="arrow">▼</div>
             </div>
 
             <div class="form-group">
                 <label> <i>✏️</i> Conteúdo Principal </label>
-                <div class="editor" id="editor" style="height: 600px"></div>
+                <div class="editor" id="editor" style="height: 700px"></div>
                 <input type="hidden" name="content" id="content" />
             </div>
 
@@ -63,5 +64,6 @@
             </button>
         </div>
     </div>
+ </div>
 </section>
-<%- include('../../layouts/footer') %>
+<%- include('../../partials/footer') %>

@@ -64,7 +64,10 @@ app.use(ArticleRouter);
 
 //=========== Homepage ============
 app.get("/home", (req, res) => {
-    ArticleModel.findAll()
+    ArticleModel.findAll({
+        order: [["updatedAt", "DESC"]],
+        include: [{ model: CategoryModel }],
+    })
         .then((articles) => {
             CategoryModel.findAll()
                 .then((categories) => {
@@ -79,10 +82,42 @@ app.get("/home", (req, res) => {
 app.get("/:slug", (req, res) => {
     const slug = req.params.slug;
 
-    //==================== Busca pelo post ====================
+    //===== Busca pelo artigo e cria pagina de viualização  ==
     ArticleModel.findOne({ where: { slug } })
-        .then((article) => res.render("article", { article }))
+        .then((article) => {
+            //======== Pega toda lista de categorias =====
+            CategoryModel.findAll()
+                .then((categories) => {
+                    res.render("article", {
+                        body: article.body,
+                        categories,
+                    });
+                })
+                .catch((err) => res.redirect("/home"));
+        })
         .catch((err) => res.redirect("/home"));
+});
+
+//=== Visualiza artigo da categoria ======
+app.get("/category/:slug", (req, res) => {
+    const slug = req.params.slug;
+
+    //===== Busca pela categoria =====
+    CategoryModel.findOne({
+        where: { slug },
+        include: [{ model: ArticleModel, include: [CategoryModel] }],
+    })
+        .then((category) => {
+            //======== Pega toda lista de categorias =====
+            CategoryModel.findAll().then((categories) => {
+                res.render("index", {
+                    categories,
+                    articles: category.articles,
+                    categoryTitle: category.title,
+                });
+            });
+        })
+        .catch((err) => res.redirect("/"));
 });
 
 //== init server ==

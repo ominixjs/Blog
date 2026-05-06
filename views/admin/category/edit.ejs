@@ -1,86 +1,77 @@
-<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<%- include('../../partials/head') %> <%- include('../../partials/navbar-admin')
+%>
 <section class="container">
-    <div class="form-header">
-        <div>
-            <h1>📝 Edite a categoria</h1>
-            <p>Edite aqui sua categoria</p>
+    <div class="form-container">
+        <div class="form-header">
+            <div>
+                <h1>📝 Editar categoria</h1>
+                <p>Atualize as informações do seu conteúdo</p>
+            </div>
         </div>
-    </div>
 
-    <div class="form-body">
-        <form action="/category/update" method="post" id="contentForm">
-            <input type="hidden" name="id" value="<%= id %>" />
+        <div class="form-body">
+            <form action="/category/update" method="post" id="contentForm">
+                <input type="hidden" name="id" value="<%= id %>" />
 
-            <div class="form-group">
-                <label for="title"> <i>📌</i> Título do Conteúdo </label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Digite um título atraente para seu conteúdo..."
-                    value="<%= title %>"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="slug">Slug</label>
-                <input
-                    type="text"
-                    id="slug"
-                    name="slug"
-                    placeholder="exemplo-de-slug"
-                    value="<%= slug %>"
-                    disabled
-                />
-            </div>
-
-            <div class="form-row">
+                <!-- Título -->
                 <div class="form-group">
-                    <label for="createdAt">Data de Criação</label>
+                    <label>📌 Título</label>
                     <input
                         type="text"
-                        id="createdAt"
-                        name="createdAt"
-                        value="<%= formatDateTime(created) %>"
+                        name="title"
+                        value="<%= title %>"
+                        placeholder="Digite um título atrativo..."
+                        required
+                    />
+                </div>
+
+                <!-- Slug -->
+                <div class="form-group">
+                    <label>🔗 Slug</label>
+                    <input
+                        type="text"
+                        name="slug"
+                        value="<%= slug %>"
                         disabled
                     />
                 </div>
 
-                <div class="form-group">
-                    <label for="updatedAt">Última Modificação</label>
-                    <input
-                        type="text"
-                        id="updatedAt"
-                        name="updatedAt"
-                        value="<%= formatDateTime(updated) %>"
-                        disabled
-                    />
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    💾 Salvar Conteúdo
-                </button>
-                <a href="/admin/categories" class="btn btn-secondary">
-                    ❌ Cancelar
-                </a>
-            </div>
-        </form>
+                <!-- Datas -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📅 Criado em</label>
+                        <input
+                            value="<%= formatDateTime(created) %>"
+                            disabled
+                        />
+                    </div>
 
-        <div id="previewSection" class="preview-section">
-            <h3 class="preview-title" id="previewTitle"></h3>
-            <div class="preview-content" id="previewContent"></div>
-            <button
-                type="button"
-                id="closePreview"
-                class="btn btn-outline"
-                style="margin-top: 15px"
-            >
-                Fechar Preview
-            </button>
+                    <div class="form-group">
+                        <label>🕒 Atualizado em</label>
+                        <input
+                            value="<%= formatDateTime(updated) %>"
+                            disabled
+                        />
+                    </div>
+                </div>
+
+                <!-- Ações -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        💾 Salvar
+                    </button>
+
+                    <a href="/admin/categories" class="btn btn-secondary">
+                        Cancelar
+                    </a>
+
+                    <button type="button" id="clearBtn" class="btn btn-outline">
+                        Limpar
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </section>
 
-<%- include('../../layouts/footer') %>
+<%- include('../../partials/footer') %>

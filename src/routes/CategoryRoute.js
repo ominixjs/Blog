@@ -10,7 +10,7 @@ const router = express.Router();
 //============ Tabela de categorias ===========
 router.get("/admin/categories", (req, res) => {
     //===== Busca todas as categorias ======
-    CategoryModel.findAll()
+    CategoryModel.findAll({ order: [["updatedAt", "DESC"]] })
         .then((categories) => {
             res.render("admin/category/index", { categories });
         })
@@ -19,7 +19,9 @@ router.get("/admin/categories", (req, res) => {
 
 //=============== Criar categoria ===============
 router.get("/admin/category/new", (req, res) => {
-    res.render("admin/category/new");
+    CategoryModel.findAll()
+        .then((categories) => res.render("admin/category/new", { categories }))
+        .catch((err) => res.redirect("/admin/categories"));
 });
 
 //====== Autentica e cria categoria ========
@@ -63,15 +65,19 @@ router.get("/admin/category/edit/:id", (req, res) => {
     //======= Busca pela categoria e retorna os dados =====
     CategoryModel.findByPk(categoryId)
         .then((category) => {
-            if (!categoryId) return res.redirect("/admin/categories");
-
-            res.render("admin/category/edit", {
-                id: category.id,
-                title: category.title,
-                slug: category.slug,
-                created: category.createdAt,
-                updated: category.updatedAt,
-            });
+            //===== Categorias para barra de navegação =====
+            CategoryModel.findAll()
+                .then((categories) =>
+                    res.render("admin/category/edit", {
+                        id: category.id,
+                        title: category.title,
+                        slug: category.slug,
+                        created: category.createdAt,
+                        updated: category.updatedAt,
+                        categories,
+                    }),
+                )
+                .catch((err) => res.redirect("/home"));
         })
         .catch((err) => res.redirect("/home"));
 });

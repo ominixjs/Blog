@@ -1,14 +1,14 @@
 @import url("./link.css");
 @import url("./colors.css");
+@import url("./templates/navbar.css");
 @import url("./templates/table.css");
 @import url("./templates/form.css");
 @import url("./templates/buttons.css");
 @import url("./templates/select.css");
-@import url("./templates/post.css");
+@import url("./templates/card.css");
 @import url("./templates/quillfonts.css");
 @import url("./main.css");
 @import url("./navbar.css");
-@import url("./homepage.css");
 
 /* de 1600px até 1051px */
 @media screen and (max-width: 1600px) and (min-width: 1051px) {

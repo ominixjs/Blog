@@ -1,12 +1,12 @@
 :root {
     --color-primary: #4862e0;
-    --color-shadow-primary: rgba(72, 97, 224, 0.3);
+    --color-shadow-primary: rgba(72, 97, 224, 0.1);
     --color-secundary: #7329ff;
-    --color-title: #232323;
-    --color-txt: #505050;
-    --color-light: #eeeeee;
+    --color-title: #1d1d1d;
+    --color-txt: #434343;
+    --color-light: #eee;
+    --color-success-light: rgba(40, 167, 70, 0.3);
     --color-success: #28a745;
-    --color-hover-success: #218838;
-    --color-danger: #dc3545;
-    --color-hover-danger: #c82333;
+    --color-danger-light: rgba(220, 53, 70, 0.3);
+    --color-danger: #dc3546;
 }

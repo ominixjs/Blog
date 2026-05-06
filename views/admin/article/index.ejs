@@ -1,6 +1,5 @@
-<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
 <section class="container">
-    <div class="content">
         <div class="table-header">
             <h1>Tabela de artigos</h1>
             <a href="/admin/article/new" class="btn btn-primary" >Novo artigo</a>
@@ -22,13 +21,13 @@
                     <% articles.forEach(article => { %>
                        <tr>
                         <td><strong><%= article.id %></strong></td>
-                        <td class="title"><strong><%= article.title %></strong></td>
-                        <td class="slug"><span class="table-badge"><%= article.slug %></span></td>
-                        <td><%= article.category.title %></td>
+                        <td class="title" title="<%= article.title %>"><strong><%= article.title %></strong></td>
+                        <td class="slug" title="<%= article.slug %>"><span class="table-badge"><%= article.slug %></span></td>
+                        <td><%= article.category?.title || false %></td>
                         <td><%= formatDateTime(article.createdAt) %></td>
                         <td><%= formatDateTime(article.updatedAt) %></td>
                         <td>
-                            <div class="form-actions">
+                            <div class="table-actions">
                                 
                                 <a href="/admin/article/edit/<%= article.id %>" type="submit" class="btn-edit">✏️ Editar</a>
                                
@@ -45,7 +44,7 @@
         </div>
     </div>
 </section>
-<%- include('../../layouts/footer') %>
+<%- include('../../partials/footer') %>
 <script>
     function actionConfirm(event, form) {
     event.preventDefault();

@@ -10,11 +10,18 @@ const router = express.Router();
 
 //======== Lista de artigos ============
 router.get("/admin/articles", (req, res) => {
-    ArticleModel.findAll({ include: [{ model: CategoryModel }] }).then(
-        (articles) => {
-            res.render("admin/article/index", { articles });
-        },
-    );
+    ArticleModel.findAll({
+        include: [{ model: CategoryModel }],
+        order: [["updatedAt", "DESC"]],
+    })
+        .then((articles) => {
+            CategoryModel.findAll()
+                .then((categories) => {
+                    res.render("admin/article/index", { articles, categories });
+                })
+                .catch((err) => res.redirect("/home"));
+        })
+        .catch((err) => res.redirect("/home"));
 });
 
 //========== tabela artigos ======================

@@ -1,9 +1,8 @@
-<%- include('../../layouts/head') %> <%- include('../../layouts/navbar') %>
+<%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
 <section class="container">
-    <div class="content">
-        <div class="table-header">
+   <div class="table-header">
             <h1>Tabela de categorias</h1>
-            <a href="/admin/category/new" class="btn btn-primary">Nova categoria</a>
+            <a href="/admin/category/new" class="btn btn-primary" >Nova categoria</a>
         </div>
         <div class="table-wrapper">
             <table id="dataTable">
@@ -21,12 +20,12 @@
                     <% categories.forEach(category => { %>
                        <tr>
                         <td><strong><%= category.id %></strong></td>
-                        <td class="title"><strong><%= category.title %></strong></td>
-                        <td class="slug"><span class="table-badge"><%= category.slug %></span></td>
+                        <td class="title" title="<%= category.title %>"><strong><%= category.title %></strong></td>
+                        <td class="slug" title="<%= category.slug %>"><span class="table-badge"><%= category.slug %></span></td>
                         <td><%= formatDateTime(category.createdAt) %></td>
                         <td><%= formatDateTime(category.updatedAt) %></td>
                         <td>
-                            <div class="form-actions">
+                            <div class="table-actions">
                                 
                                 <a href="/admin/category/edit/<%= category.id %>" type="submit" class="btn-edit">✏️ Editar</a>
                                
@@ -43,7 +42,7 @@
         </div>
     </div>
 </section>
-<%- include('../../layouts/footer') %>
+<%- include('../../partials/footer') %>
 <script>
     function actionConfirm(event, form) {
     event.preventDefault();

@@ -1,0 +1,22 @@
+<div class="blog-card">
+    <div class="card-image">
+        <img src="https://picsum.photos/600/400" alt="Imagem do post" />
+        <span class="card-category"> <%= article.category?.title %> </span>
+    </div>
+
+    <div class="card-content">
+        <h3 class="card-title"><%= article.title %></h3>
+
+        <p class="card-description">
+            Aprenda as melhores práticas modernas para criar aplicações
+            escaláveis, seguras e performáticas usando Node.js.
+        </p>
+
+        <div class="card-footer">
+            <span class="card-date"
+                ><%= formatDateTime(article.updatedAt) %></span
+            >
+            <a href="/<%= article.slug %>" class="card-button">Ler mais</a>
+        </div>
+    </div>
+</div>
