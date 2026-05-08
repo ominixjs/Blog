@@ -1,0 +1,10 @@
+<%- include('../partials/head') %> <%- include('../partials/navbar') %>
+<section class="container">
+  <div class="list-cards">
+    <% articles.forEach(article => { %>
+    <%- include('../partials/card', { article }) %>
+    <% }) %>
+  </div>
+
+</section>
+<%- include('../partials/footer') %>

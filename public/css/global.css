@@ -3,6 +3,7 @@
 @import url("./templates/navbar.css");
 @import url("./templates/table.css");
 @import url("./templates/form.css");
+@import url("./templates/pagination.css");
 @import url("./templates/buttons.css");
 @import url("./templates/select.css");
 @import url("./templates/card.css");
@@ -12,8 +13,8 @@
 
 /* de 1600px até 1051px */
 @media screen and (max-width: 1600px) and (min-width: 1051px) {
-    header .navbar {
-        padding-inline: 5%;
+    .navbar {
+        padding: 0 5%;
     }
 
     .container {
@@ -23,15 +24,26 @@
 
 /* de 0 até 1051px */
 @media screen and (max-width: 1050px) {
-    header .navbar {
+    .navbar {
         padding-inline: 5%;
     }
 
-    header .navbar .nav-link {
+    .navbar .nav-links {
         display: none;
     }
 
     .container {
         padding: 5%;
+    }
+
+    /* CARD */
+    .blog-card {
+        width: 100%;
+        max-width: 100%;
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
     }
 }

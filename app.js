@@ -58,20 +58,21 @@ app.locals.formatDateTime = (date) => {
     return formatted;
 };
 
-//============= Router ============
+//===== Router ========
 app.use(CategoryRouter);
 app.use(ArticleRouter);
 
-//=========== Homepage ============
+//=========== Homepage ==========
 app.get("/home", (req, res) => {
     ArticleModel.findAll({
         order: [["updatedAt", "DESC"]],
         include: [{ model: CategoryModel }],
+        // limit: 6,
     })
         .then((articles) => {
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("index", { articles, categories });
+                    res.render("pages/index", { articles, categories });
                 })
                 .catch((err) => res.redirect("/err"));
         })
@@ -88,7 +89,7 @@ app.get("/:slug", (req, res) => {
             //======== Pega toda lista de categorias =====
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("article", {
+                    res.render("pages/article", {
                         body: article.body,
                         categories,
                     });
@@ -110,7 +111,7 @@ app.get("/category/:slug", (req, res) => {
         .then((category) => {
             //======== Pega toda lista de categorias =====
             CategoryModel.findAll().then((categories) => {
-                res.render("index", {
+                res.render("pages/index", {
                     categories,
                     articles: category.articles,
                     categoryTitle: category.title,
@@ -118,6 +119,73 @@ app.get("/category/:slug", (req, res) => {
             });
         })
         .catch((err) => res.redirect("/"));
+});
+
+// ============ Paginação de conteúdos =========
+app.get("/article/page/:num", (req, res) => {
+    const page = req.params.num;
+
+    const pageLimit = 6;
+    let offSet = 0;
+
+    // ===== Valida nº de rota =====
+    if (isNaN(page) || page <= 0) {
+        offSet = 0;
+    } else {
+        offSet = pageLimit * (parseInt(page) - 1);
+    }
+
+    // ===== Cria paginação =======
+    ArticleModel.findAndCountAll({
+        limit: pageLimit,
+        offset: offSet,
+        order: [["updatedAt", "DESC"]],
+        include: [{ model: CategoryModel }],
+    })
+        .then((articles) => {
+            console.log(1 + " =================================");
+            // =============
+            let next = true;
+            let prev = true;
+
+            // =========================================
+            if (offSet + pageLimit >= articles.count) {
+                next = false;
+            }
+
+            // ==============
+            if (offSet < 1) {
+                prev = false;
+            }
+
+            // Calcula valor para gerar botões para paginação
+            const pageCount = Math.ceil(articles.count / pageLimit);
+
+            // ==============
+            const result = {
+                next, // Validação paginação
+                prev, // Validação paginação
+                pageCount, // Cria recurso para botões de paginação
+                page: parseInt(page), // Pagina atual
+                articles: articles, // Lista
+            };
+
+            // ==== Dependdencia da barra de navegação ====
+            CategoryModel.findAll()
+                .then((categories) => {
+                    res.render("pages/pagination", {
+                        categories,
+                        articles: result.articles.rows,
+                        articlesCount: result.articles.count,
+                        page: result.page,
+                        pageCount,
+                        nextPagination: result.next,
+                        prevPagination: result.prev,
+                    });
+                })
+                .catch((err) => res.redirect("/home"));
+        })
+        .catch((err) => res.redirect("/home"));
 });
 
 //== init server ==
