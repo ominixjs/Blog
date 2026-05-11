@@ -1,5 +1,6 @@
 import express from "express";
 import ejs from "ejs";
+import { Op } from "sequelize";
 
 //================ Database ====================
 import connection from "./src/db/connection.js";
@@ -79,6 +80,43 @@ app.get("/home", (req, res) => {
         .catch((err) => res.redirect("/err"));
 });
 
+app.get("/search", (req, res) => {
+    const { filter, search } = req.query;
+
+    let order = [];
+    let where = {};
+
+    // === Filtra os mais acesssados ===
+    if (filter === "popular") {
+        order = [["updatedAt", "ASC"]];
+    }
+
+    // ======= Filtra os recentes ======
+    if (filter === "recent") {
+        order = [["updatedAt", "DESC"]];
+    }
+
+    //======= Busca nomes relativos ===============
+    if (search) {
+        where.title = { [Op.like]: `%${search}%` };
+    }
+
+    ArticleModel.findAll({
+        include: [{ model: CategoryModel }],
+        order,
+        where,
+        limit: 6,
+    })
+        .then((articles) => {
+            CategoryModel.findAll()
+                .then((categories) => {
+                    res.render("pages/search", { categories, articles });
+                })
+                .catch((err) => res.redirect("/home"));
+        })
+        .catch((err) => res.redirect("/home"));
+});
+
 //=========== Viualização de post ==============
 app.get("/:slug", (req, res) => {
     const slug = req.params.slug;
@@ -121,7 +159,7 @@ app.get("/category/:slug", (req, res) => {
         .catch((err) => res.redirect("/"));
 });
 
-// ============ Paginação de conteúdos =========
+//============ Paginação de conteúdos ========
 app.get("/article/page/:num", (req, res) => {
     const page = req.params.num;
 
@@ -143,7 +181,6 @@ app.get("/article/page/:num", (req, res) => {
         include: [{ model: CategoryModel }],
     })
         .then((articles) => {
-            console.log(1 + " =================================");
             // =============
             let next = true;
             let prev = true;
@@ -173,7 +210,7 @@ app.get("/article/page/:num", (req, res) => {
             // ==== Dependdencia da barra de navegação ====
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("pages/pagination", {
+                    res.render("pages/news", {
                         categories,
                         articles: result.articles.rows,
                         articlesCount: result.articles.count,

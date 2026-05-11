@@ -1,0 +1,76 @@
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.header-title h1 {
+    font-size: 2rem;
+    color: var(--color-title);
+    margin-bottom: 6px;
+}
+
+.header-title p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--color-light);
+}
+
+.filter-buttons input[type="radio"] {
+    display: none;
+    appearance: none;
+}
+
+.filter-btn:hover {
+    background-color: var(--color-light);
+}
+
+.filter-buttons input[type="radio"]:checked + .filter-btn {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-secundary) 100%
+    );
+    color: white;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        align-items: flex-start;
+    }
+
+    .filter-form {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}

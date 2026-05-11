@@ -1,0 +1,45 @@
+<%- include('../partials/head') %> <%- include('../partials/navbar') %>
+<section class="container">
+  <div class="header-content">
+    <div class="header-title">
+      <h1>Artigos</h1>
+      <p>Explore conteúdos recentes e populares</p>
+    </div>
+
+    <form action="/search" method="get" class="filter-form">
+
+      <div class="filter-buttons">
+
+        <input type="radio" name="filter" id="popular" value="popular">
+        <label for="popular" class="btn filter-btn">
+          <i class="fi fi-rr-flame"></i> Mais acessados
+        </label>
+
+        <input type="radio" name="filter" id="recent" value="recent" checked>
+        <label for="recent" class="btn filter-btn">
+          <i class="fi fi-rr-calendar-clock"></i> Recentes
+        </label>
+
+      </div>
+
+      <div class="search-box">
+        <input type="text" name="search" placeholder="Buscar artigo...">
+
+        <button type="submit" class="btn btn-primary">
+          <i class="fi fi-rr-search"></i> Buscar
+        </button>
+        <button type="submit" class="btn">
+          <i class="fi fi-rr-refresh"></i> Atualizar
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="list-cards">
+    <% articles.forEach(article => { %>
+    <%- include('../partials/card', { article }) %>
+    <% }) %>
+  </div>
+
+  <%- include('../partials/pagination', { prevPagination, nextPagination, page, pageCount }) %>
+</section>
+<%- include('../partials/footer') %>

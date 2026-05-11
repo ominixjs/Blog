@@ -48,8 +48,8 @@ select {
     border-radius: 10px;
     border: 1px solid var(--color-light);
     font-size: 0.8em;
-    transition: 0.2s;
     background-color: #f4f8fa;
+    transition: all 0.4s;
 }
 
 select {
@@ -99,7 +99,7 @@ input:disabled {
     right: 14px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: .6em;
+    font-size: 0.6em;
     color: var(--color-txt);
 }
 

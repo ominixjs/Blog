@@ -4,8 +4,6 @@ Font.whitelist = ["worksans", "roboto", "opensans"];
 
 Quill.register(Font, true);
 
-console.log(Font.whitelist);
-
 const quill = new Quill("#editor", {
     theme: "snow",
     modules: {

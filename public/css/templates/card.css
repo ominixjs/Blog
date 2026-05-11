@@ -6,8 +6,7 @@
 
 /* CARD */
 .blog-card {
-    width: 100%;
-    max-width: 350px;
+    width: calc(33.33% - 1rem);
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
