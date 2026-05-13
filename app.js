@@ -1,6 +1,7 @@
 import express from "express";
 import ejs from "ejs";
 import { Op } from "sequelize";
+import cookieParser from "cookie-parser";
 
 //================ Database ====================
 import connection from "./src/db/connection.js";
@@ -8,6 +9,7 @@ import connection from "./src/db/connection.js";
 //========================= Routes ========================
 import CategoryRouter from "./src/routes/CategoryRoute.js";
 import ArticleRouter from "./src/routes/ArticleRoute.js";
+import UserRoute from "./src/routes/UserRoute.js";
 
 //======================== Models ========================
 import CategoryModel from "./src/models/CategoryModel.js";
@@ -22,6 +24,9 @@ app.use(express.json());
 
 //======= Arquivos estativos =====
 app.use(express.static("public"));
+
+//=== Cookie temporario ===
+app.use(cookieParser());
 
 //======= Renderizador =======
 app.set("view engine", "ejs");
@@ -62,6 +67,7 @@ app.locals.formatDateTime = (date) => {
 //===== Router ========
 app.use(CategoryRouter);
 app.use(ArticleRouter);
+app.use(UserRoute);
 
 //=========== Homepage ==========
 app.get("/home", (req, res) => {
@@ -73,7 +79,10 @@ app.get("/home", (req, res) => {
         .then((articles) => {
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("pages/index", { articles, categories });
+                    res.render("pages/index", {
+                        articles,
+                        categories,
+                    });
                 })
                 .catch((err) => res.redirect("/err"));
         })
@@ -110,7 +119,10 @@ app.get("/search", (req, res) => {
         .then((articles) => {
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("pages/search", { categories, articles });
+                    res.render("pages/search", {
+                        categories,
+                        articles,
+                    });
                 })
                 .catch((err) => res.redirect("/home"));
         })

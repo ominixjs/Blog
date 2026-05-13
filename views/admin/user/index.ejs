@@ -1,0 +1,55 @@
+<%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
+<section class="container">
+  <div class="table-header">
+    <h1>Tabela de usuários</h1>
+  </div>
+  <div class="table-wrapper">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Data de Criação</th>
+          <th>Última Modificação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <% users.forEach(user => { %>
+        <tr>
+          <td><strong><%= user.id %></strong></td>
+          <td class="title" title="<%= user.name %>"><strong><%= user.name %></strong></td>
+          <td class="title" title="<%= user.email %>"><strong><%= user.email %></strong></td>
+          <td><%= user.password %></td>
+          <td><%= formatDateTime(user.createdAt) %></td>
+          <td><%= formatDateTime(user.updatedAt) %></td>
+          <td>
+            <div class="table-actions">
+
+              <a href="/admin/user/edit/<%= user.id %>" type="submit" class="btn-edit">✏️ Editar</a>
+
+              <form action="/user/delete" method="post" onsubmit="actionConfirm(event, this)">
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <button type="submit" class="btn-delete">🗑️ Excluir</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</section>
+<%- include('../../partials/footer') %>
+<script>
+  function actionConfirm(event, form) {
+    event.preventDefault();
+
+    const itemDelete = confirm("Deseja deletar esta categoria?");
+
+    if (itemDelete) form.submit();
+  }
+</script>

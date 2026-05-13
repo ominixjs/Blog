@@ -1,6 +1,9 @@
 import express from "express";
 import slugify from "slugify";
 
+//================= Middleware ==================
+import userAuth from "../middleware/userAuth.js";
+
 //==================== Models =========================
 import CategoryModel from "../models/CategoryModel.js";
 
@@ -8,19 +11,27 @@ import CategoryModel from "../models/CategoryModel.js";
 const router = express.Router();
 
 //============ Tabela de categorias ===========
-router.get("/admin/categories", (req, res) => {
+router.get("/admin/categories", userAuth, (req, res) => {
     //===== Busca todas as categorias ======
     CategoryModel.findAll({ order: [["updatedAt", "DESC"]] })
         .then((categories) => {
-            res.render("admin/category/index", { categories });
+            res.render("admin/category/index", {
+                name: req.user.name,
+                categories,
+            });
         })
         .catch((err) => res.redirect("/home"));
 });
 
 //=============== Criar categoria ===============
-router.get("/admin/category/new", (req, res) => {
+router.get("/admin/category/new", userAuth, (req, res) => {
     CategoryModel.findAll()
-        .then((categories) => res.render("admin/category/new", { categories }))
+        .then((categories) =>
+            res.render("admin/category/new", {
+                name: req.user.name,
+                categories,
+            }),
+        )
         .catch((err) => res.redirect("/admin/categories"));
 });
 
@@ -46,29 +57,30 @@ router.post("/category/save", (req, res) => {
 
 //============== Autentica e deleta categoria =============
 router.post("/category/delete", (req, res) => {
-    const categoryId = req.body.id;
+    const id = req.body.id;
 
-    if (categoryId === undefined) return res.redirect("/admin/categories");
+    if (id === undefined) return res.redirect("/admin/categories");
 
     //======= Busca pela categoria e deleta ============
-    CategoryModel.destroy({ where: { id: categoryId } })
+    CategoryModel.destroy({ where: { id } })
         .then(() => res.redirect("/admin/categories"))
         .catch((err) => res.redirect("/home"));
 });
 
 //====================== Edita categoria =============
-router.get("/admin/category/edit/:id", (req, res) => {
-    const categoryId = req.params.id;
+router.get("/admin/category/edit/:id", userAuth, (req, res) => {
+    const id = req.params.id;
 
-    if (isNaN(categoryId)) return res.redirect("/admin/categories");
+    if (isNaN(id)) return res.redirect("/admin/categories");
 
     //======= Busca pela categoria e retorna os dados =====
-    CategoryModel.findByPk(categoryId)
+    CategoryModel.findByPk(id)
         .then((category) => {
             //===== Categorias para barra de navegação =====
             CategoryModel.findAll()
                 .then((categories) =>
                     res.render("admin/category/edit", {
+                        name: req.user.name,
                         id: category.id,
                         title: category.title,
                         slug: category.slug,

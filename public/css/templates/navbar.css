@@ -28,7 +28,7 @@
 }
 
 .nav-links a {
-    color: var(--color-txt);
+    color: var(--color-title);
     text-decoration: none;
     padding: 8px;
     transition: 0.3s;

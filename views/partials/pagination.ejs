@@ -4,6 +4,9 @@
    <% } %>
 
    <% for (let i = 1; i <= pageCount; i++) { %>
+   <% if (page == i) { %>
+   <a href="/article/page/<%= i %>" class="page-number active"><%= i %></a>
+   <% continue } %>
    <a href="/article/page/<%= i %>" class="page-number"><%= i %></a>
    <% } %>
 

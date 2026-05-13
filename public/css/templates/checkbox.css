@@ -1,0 +1,72 @@
+/* Terms */
+.terms-group {
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
+.terms-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Esconde checkbox padrão */
+.terms-checkbox input {
+    display: none;
+}
+
+/* Box custom */
+.checkmark {
+    min-width: 20px;
+    height: 20px;
+
+    border-radius: 4px;
+    border: 1.5px solid var(--color-light);
+
+    background: #fff;
+
+    position: relative;
+
+    transition: 0.2s;
+}
+
+/* Check */
+.terms-checkbox input:checked + .checkmark {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.terms-checkbox input:checked + .checkmark::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Texto */
+.terms-text {
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--color-txt);
+}
+
+.terms-text a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-text a:hover {
+    text-decoration: underline;
+}

@@ -1,6 +1,9 @@
 import express from "express";
 import slugify from "slugify";
 
+//================= Middleware ==================
+import userAuth from "../middleware/userAuth.js";
+
 //==================== Models =======================
 import ArticleModel from "../models/ArticleModel.js";
 import CategoryModel from "../models/CategoryModel.js";
@@ -9,7 +12,7 @@ import CategoryModel from "../models/CategoryModel.js";
 const router = express.Router();
 
 //======== Lista de artigos ============
-router.get("/admin/articles", (req, res) => {
+router.get("/admin/articles", userAuth, (req, res) => {
     ArticleModel.findAll({
         include: [{ model: CategoryModel }],
         order: [["updatedAt", "DESC"]],
@@ -17,7 +20,11 @@ router.get("/admin/articles", (req, res) => {
         .then((articles) => {
             CategoryModel.findAll()
                 .then((categories) => {
-                    res.render("admin/article/index", { articles, categories });
+                    res.render("admin/article/index", {
+                        name: req.user.name,
+                        articles,
+                        categories,
+                    });
                 })
                 .catch((err) => res.redirect("/home"));
         })
@@ -25,11 +32,12 @@ router.get("/admin/articles", (req, res) => {
 });
 
 //========== tabela artigos ======================
-router.get("/admin/article/new", (req, res) => {
+router.get("/admin/article/new", userAuth, (req, res) => {
     //=== Lista todas as categorias ===
     CategoryModel.findAll()
         .then((categories) =>
             res.render("admin/article/new", {
+                name: req.user.name,
                 categories,
             }),
         )
@@ -68,7 +76,7 @@ router.post("/article/delete", (req, res) => {
 });
 
 //================= Editar artigo ==================
-router.get("/admin/article/edit/:id", (req, res) => {
+router.get("/admin/article/edit/:id", userAuth, (req, res) => {
     const articleId = req.params.id;
 
     if (isNaN(articleId)) return res.redirect("/home");
@@ -80,6 +88,7 @@ router.get("/admin/article/edit/:id", (req, res) => {
             CategoryModel.findAll()
                 .then((categories) => {
                     res.render("admin/article/edit", {
+                        name: req.user.name,
                         id: article.id,
                         title: article.title,
                         slug: article.slug,

@@ -14,8 +14,8 @@
 }
 
 .header-title p {
-    color: #6b7280;
-    font-size: 0.95rem;
+    color: var(--color-txt);
+    font-size: 0.95em;
 }
 
 .filter-form {
@@ -27,17 +27,17 @@
 
 .filter-btn {
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 1px solid var(--color-light);
+}
+
+.filter-btn:hover {
+    background-color: var(--color-light);
 }
 
 .filter-buttons input[type="radio"] {
     display: none;
     appearance: none;
-}
-
-.filter-btn:hover {
-    background-color: var(--color-light);
 }
 
 .filter-buttons input[type="radio"]:checked + .filter-btn {

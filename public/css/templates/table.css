@@ -53,7 +53,7 @@ tbody tr:hover {
 tbody td {
     padding: 1rem;
     font-size: 0.85em;
-    color: var(--color-txt);
+    color: var(--color-title);
 
     max-width: 250px; /* Ou max-width */
     white-space: nowrap; /* Impede quebra de linha */

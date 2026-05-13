@@ -4,7 +4,7 @@
     border-radius: 8px;
     font-size: 0.85em;
     font-weight: 500;
-    color: var(--color-txt);
+    color: var(--color-title);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
