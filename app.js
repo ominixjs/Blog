@@ -7,8 +7,8 @@ import cookieParser from "cookie-parser";
 import connection from "./src/db/connection.js";
 
 //========================= Routes ========================
-import CategoryRouter from "./src/routes/CategoryRoute.js";
-import ArticleRouter from "./src/routes/ArticleRoute.js";
+import CategoriesRoute from "./src/routes/CategoriesRoute.js";
+import ArticlesRoute from "./src/routes/ArticlesRoute.js";
 import UserRoute from "./src/routes/UserRoute.js";
 
 //======================== Models ========================
@@ -65,8 +65,8 @@ app.locals.formatDateTime = (date) => {
 };
 
 //===== Router ========
-app.use(CategoryRouter);
-app.use(ArticleRouter);
+app.use(CategoriesRoute);
+app.use(ArticlesRoute);
 app.use(UserRoute);
 
 //=========== Homepage ==========
@@ -179,11 +179,7 @@ app.get("/article/page/:num", (req, res) => {
     let offSet = 0;
 
     // ===== Valida nº de rota =====
-    if (isNaN(page) || page <= 0) {
-        offSet = 0;
-    } else {
-        offSet = pageLimit * (parseInt(page) - 1);
-    }
+    offSet = isNaN(page) || page <= 0 ? 0 : pageLimit * (parseInt(page) - 1);
 
     // ===== Cria paginação =======
     ArticleModel.findAndCountAll({

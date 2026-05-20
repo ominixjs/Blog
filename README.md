@@ -27,7 +27,7 @@ _Feito por OMINIXJS_
 - ✅ **Cookie com cookie-parser;**
 - ✅ **Token com jsonwebtoken;**
 - ✅ **Senhas criptografadas com Bcrypt;**
-- ⚠️ **Estrtura MVC**
+- ✅ **Estrtura MVC**
 - ⚠️ **HTTPS**
 
 ...
