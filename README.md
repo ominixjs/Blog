@@ -28,6 +28,7 @@ _Feito por OMINIXJS_
 - ✅ **Token com jsonwebtoken;**
 - ✅ **Senhas criptografadas com Bcrypt;**
 - ✅ **Estrtura MVC**
+- ⚠️ **Adicionar Validação de admin**
 - ⚠️ **HTTPS**
 
 ...

@@ -4,7 +4,7 @@ import express from "express";
 import userAuth from "../middleware/userAuth.js";
 
 //=============== Controllers =====================
-import * as Users from "../controllers/UsersController.js";
+import * as UsersController from "../controllers/UsersController.js";
 
 //=============================
 const router = express.Router();
@@ -13,22 +13,22 @@ const router = express.Router();
 const saltRounds = 12;
 
 //========== listagem de usuários ==========
-router.get("/admin/users", userAuth, Users.Users);
+router.get("/admin/users", userAuth, UsersController.Users);
 
 //================ Rota de login ======================
-router.get("/user/login", Users.UserLogin);
+router.get("/admin/login", UsersController.UserLogin);
 
 //========= Autenticar usuário ================
-router.post("/user/login/auth", Users.AuthUserLogin);
+router.post("/user/login/auth", UsersController.AuthUserLogin);
 
 //================ Novo usuario =====================
-router.get("/user/register", Users.UserRegister);
+router.get("/admin/register", UsersController.UserRegister);
 
 //====== Authenticar dados de registro ========
-router.post("/user/register/auth", Users.AuthUserRegister);
+router.post("/user/register/auth", UsersController.AuthUserRegister);
 
 //============== Deletar Usuário ==========
-router.post("/user/delete", Users.UserDelete);
+router.post("/user/delete", UsersController.UserDelete);
 
 //============= Sair do login =======
 router.get("/logout", (req, res) => {
