@@ -52,7 +52,7 @@ app.use(ArticlesRoute);
 app.use(UserRoute);
 
 //=========== Homepage ==========
-app.get("/home", MainController.Homepage);
+app.get("/", MainController.Homepage);
 
 app.get("/articles/search", MainController.ArticlesSearch);
 
