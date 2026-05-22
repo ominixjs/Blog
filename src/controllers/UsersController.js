@@ -24,7 +24,7 @@ export async function Users(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -33,7 +33,7 @@ export async function UserLogin(req, res) {
         const categories = await CategoryRepository.Categories();
         res.render("admin/user/login", { categories });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -75,7 +75,7 @@ export async function AuthUserLogin(req, res) {
 
         res.redirect("/admin/categories");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -84,7 +84,7 @@ export async function UserRegister(req, res) {
         const categories = await CategoryRepository.Categories();
         res.render("admin/user/register", { categories });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -114,7 +114,7 @@ export async function AuthUserRegister(req, res) {
 
         res.redirect("/admin/users");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -129,6 +129,6 @@ export async function UserDelete(req, res) {
         await UserRepository.UserDelete(id);
         res.redirect("/admin/users");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }

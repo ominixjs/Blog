@@ -20,7 +20,7 @@ export async function Articles(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -34,7 +34,7 @@ export async function ArticleCreate(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -66,7 +66,7 @@ export async function ArticleDelete(req, res) {
         await ArticleRepository.ArticleDestroy(id);
         res.redirect("/admin/articles");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -74,7 +74,7 @@ export async function ArticleDelete(req, res) {
 export async function ArticleEdit(req, res) {
     const id = req.params.id;
 
-    if (isNaN(id)) return res.redirect("/home");
+    if (isNaN(id)) return res.redirect("/");
 
     //====== Editando artigo =======
     try {
@@ -93,7 +93,7 @@ export async function ArticleEdit(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -110,6 +110,6 @@ export async function ArticleUpdate(req, res) {
         await ArticleRepository.ArticleUpdate(id, title, content, category);
         res.redirect("/admin/articles");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }

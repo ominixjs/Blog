@@ -16,7 +16,7 @@ export async function Categories(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -45,7 +45,7 @@ export async function CategorySave(req, res) {
         await CategoryRepository.CategoryCreate(title);
         res.redirect("/admin/categories");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -59,7 +59,7 @@ export async function CategoryDelete(req, res) {
         await CategoryRepository.CategoryDelete(id);
         res.redirect("/admin/categories");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -84,7 +84,7 @@ export async function CategoryEdit(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -98,6 +98,6 @@ export async function CategoryUpdate(req, res) {
         await CategoryRepository.CategoryUpdate(id, title);
         res.redirect("/admin/categories");
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }

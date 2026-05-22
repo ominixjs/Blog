@@ -4,7 +4,7 @@ import { Op } from "sequelize";
 import * as CategoryRepository from "../repositories/CategoryRepository.js";
 import * as ArticleRepository from "../repositories/ArticleRepository.js";
 
-export async function Homepage(req, res) {
+export async function page(req, res) {
     try {
         const articles = await ArticleRepository.ArticlesAll();
         const categories = await CategoryRepository.Categories();
@@ -52,7 +52,7 @@ export async function ArticlesSearch(req, res) {
             articles,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -69,7 +69,7 @@ export async function Slug(req, res) {
             categories,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -87,7 +87,7 @@ export async function CategorySlug(req, res) {
             categoryTitle: category.title,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
 
@@ -146,6 +146,6 @@ export async function Pagination(req, res) {
             prevPagination: result.prev,
         });
     } catch (err) {
-        res.redirect("/home");
+        res.redirect("/");
     }
 }
