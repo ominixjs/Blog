@@ -8,6 +8,13 @@ export function Categories() {
     return CategoryModel.findAll({ order: [["updatedAt", "DESC"]] });
 }
 
+export function Category(slug) {
+    return CategoryModel.findOne({
+        where: { slug },
+        include: [{ model: ArticleModel, include: [CategoryModel] }],
+    });
+}
+
 export function CategoryCreate(categoryTitle) {
     return CategoryModel.create({
         title: categoryTitle,
@@ -19,7 +26,7 @@ export function CategoryDelete(id) {
     return CategoryModel.destroy({ where: { id } });
 }
 
-export function CategoryEdit(id) {
+export function CategoryPk(id) {
     return CategoryModel.findByPk(id);
 }
 

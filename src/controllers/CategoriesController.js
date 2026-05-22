@@ -71,7 +71,7 @@ export async function CategoryEdit(req, res) {
     //======= Busca pela categoria e retorna os dados =====
     try {
         //===== Categorias para barra de navegação =====
-        const category = await CategoryRepository.CategoryEdit(id);
+        const category = await CategoryRepository.CategoryPk(id);
         const categories = await CategoryRepository.Categories();
 
         res.render("admin/category/edit", {

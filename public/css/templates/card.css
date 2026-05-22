@@ -7,6 +7,8 @@
 /* CARD */
 .blog-card {
     width: calc(33.33% - 1rem);
+    height: 450px;
+    max-height: 450px;
     background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
@@ -35,7 +37,7 @@
     position: absolute;
     top: 12px;
     left: 12px;
-    background: #4f46e5;
+    background: var(--color-primary);
     color: #fff;
     padding: 4px 10px;
     font-size: 12px;
@@ -48,16 +50,22 @@
 }
 
 .card-title {
-    font-size: 18px;
+    font-size: 1.1em;
     color: #1a1a1a;
     margin-bottom: 10px;
 }
 
 .card-description {
-    font-size: 14px;
+    font-size: .8em;
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Número máximo de linhas */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* FOOTER */
@@ -75,7 +83,7 @@
 /* BOTÃO */
 .card-button {
     text-decoration: none;
-    background: #4f46e5;
+    background: var(--color-primary);
     color: #fff;
     padding: 6px 12px;
     font-size: 13px;
@@ -84,5 +92,5 @@
 }
 
 .card-button:hover {
-    background: #4338ca;
+    background: var(--color-primary);
 }

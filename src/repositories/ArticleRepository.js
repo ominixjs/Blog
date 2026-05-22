@@ -11,6 +11,18 @@ export function ArticlesAll() {
     });
 }
 
+export function Article(slug) {
+    return ArticleModel.findOne({ where: { slug } });
+}
+
+export function ArticlesPagination(order, where) {
+    return ArticleModel.findAll({
+        order,
+        where,
+        include: [{ model: CategoryModel }],
+    });
+}
+
 export function ArticleCreate(title, content, category) {
     return ArticleModel.create({
         title: title,
@@ -24,8 +36,17 @@ export function ArticleDestroy(id) {
     return ArticleModel.destroy({ where: { id } });
 }
 
-export function ArticleSearch(id) {
+export function ArticlePk(id) {
     return ArticleModel.findByPk(id);
+}
+
+export function ArticlesFindAndCountAll(limit, offset) {
+    return ArticleModel.findAndCountAll({
+        limit,
+        offset,
+        order: [["updatedAt", "DESC"]],
+        include: [{ model: CategoryModel }],
+    });
 }
 
 export function ArticleUpdate(id, title, content, category) {

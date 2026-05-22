@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 export default function userAuth(req, res, next) {
     // Busca token gerado no login
     const token = req.cookies.token;
-    if (!token) return res.redirect("/user/login");
+    if (!token) return res.redirect("/admin/login");
 
     try {
         // Valida token

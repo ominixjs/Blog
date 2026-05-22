@@ -19,7 +19,7 @@ _Feito por OMINIXJS_
 
 ![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-## 🚀 Status
+## 🚀 Status Desenvolvimento
 
 - ✅ **Banco de dados com mysql;**
 - ✅ **Renderizador Html com ejs;**
@@ -28,7 +28,11 @@ _Feito por OMINIXJS_
 - ✅ **Token com jsonwebtoken;**
 - ✅ **Senhas criptografadas com Bcrypt;**
 - ✅ **Estrtura MVC**
-- ⚠️ **Adicionar Validação de admin**
+- ✅ **Adicionar Validação de admin**
 - ⚠️ **HTTPS**
 
-...
+## Status Deploy
+
+```javascript
+
+```

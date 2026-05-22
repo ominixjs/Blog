@@ -78,7 +78,7 @@ export async function ArticleEdit(req, res) {
 
     //====== Editando artigo =======
     try {
-        const article = await ArticleRepository.ArticleSearch(id);
+        const article = await ArticleRepository.ArticlePk(id);
         const categories = await CategoryRepository.Categories();
 
         res.render("admin/article/edit", {
