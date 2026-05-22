@@ -21,6 +21,6 @@ CategoryModel.hasMany(ArticleMoodel);
 ArticleMoodel.belongsTo(CategoryModel);
 
 //====== Criar relação no DB ==========
-// ArticleMoodel.sync({ force: true });
+ArticleMoodel.sync({ force: false });
 
 export default ArticleMoodel;

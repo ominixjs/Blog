@@ -19,13 +19,13 @@ router.get("/admin/users", userAuth, UsersController.Users);
 router.get("/admin/login", UsersController.UserLogin);
 
 //========= Autenticar usuário ================
-router.post("/user/login/auth", UsersController.AuthUserLogin);
+router.post("/login/auth", UsersController.AuthUserLogin);
 
 //================ Novo usuario =====================
 router.get("/admin/register", UsersController.UserRegister);
 
 //====== Authenticar dados de registro ========
-router.post("/user/register/auth", UsersController.AuthUserRegister);
+router.post("/register/auth", UsersController.AuthUserRegister);
 
 //============== Deletar Usuário ==========
 router.post("/user/delete", UsersController.UserDelete);

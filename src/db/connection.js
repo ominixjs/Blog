@@ -9,7 +9,15 @@ const connection = new Sequelize(
     process.env.DB_KEY,
     {
         host: process.env.DB_HOST_NAME,
+        port: process.env.DB_PORT,
         dialect: process.env.DB_NAME,
+        // logging: false,
+        dialectOptions: {
+            ssl: {
+                // require: true,
+                rejectUnauthorized: false,
+            },
+        },
         timezone: "-03:00",
     },
 );

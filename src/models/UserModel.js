@@ -16,7 +16,7 @@ const User = connection.define("users", {
     },
 });
 
-// User.sync({ force: false });
+User.sync({ force: false });
 
 //==================
 export default User;
