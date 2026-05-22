@@ -4,7 +4,7 @@ import { Op } from "sequelize";
 import * as CategoryRepository from "../repositories/CategoryRepository.js";
 import * as ArticleRepository from "../repositories/ArticleRepository.js";
 
-export async function page(req, res) {
+export async function Homepage(req, res) {
     try {
         const articles = await ArticleRepository.ArticlesAll();
         const categories = await CategoryRepository.Categories();
