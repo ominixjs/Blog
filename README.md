@@ -13,10 +13,6 @@ _Feito por OMINIXJS_
 ![Bcrypt](https://img.shields.io/badge/bcrypt-Password%20Hash-success?style=for-the-badge)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge)
 
-![Protocol](https://img.shields.io/badge/Protocol-HTTP-red?style=for-the-badge)
-![HTTPS](https://img.shields.io/badge/HTTPS-Pendente-yellow?style=for-the-badge)
-![Deploy](https://img.shields.io/badge/Deploy-N%C3%A3o%20Realizado-lightgrey?style=for-the-badge)
-
 ![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ## 🚀 Status Desenvolvimento
@@ -29,10 +25,10 @@ _Feito por OMINIXJS_
 - ✅ **Senhas criptografadas com Bcrypt;**
 - ✅ **Estrtura MVC**
 - ✅ **Adicionar Validação de admin**
-- ⚠️ **HTTPS**
+- ✅ **HTTPS**
 
 ## Status Deploy
 
-```javascript
+![Deploy](https://img.shields.io/badge/Deploy-Realizado-success?style=for-the-badge)
 
-```
+> https://blog-x7vq.onrender.com
