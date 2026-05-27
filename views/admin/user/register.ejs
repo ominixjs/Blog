@@ -10,15 +10,15 @@
     </div>
 
     <div class="form-body">
-      <form action="/register/auth" method="post" id="contentForm">
+      <form action="/register/auth" method="post" id="form" onsubmit="inputValidate(event, this)">
         <div class="form-group">
           <label for="name"> Seu nome </label>
-          <input type="text" id="name" name="name" placeholder="Seu nome" value="Carlos" required />
+          <input type="text" id="name" name="name" placeholder="Seu nome" value="Random" required />
         </div>
 
         <div class="form-group">
           <label for="email"> Seu email </label>
-          <input type="email" id="email" name="email" placeholder="Coloque seu email" value="emailemail@gmail.com" required />
+          <input type="email" id="email" name="email" placeholder="Coloque seu email" value="random@kk.com" required />
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -35,7 +35,7 @@
         <div class="form-group terms-group">
           <label class="terms-checkbox">
 
-            <input type="checkbox" name="terms" required />
+            <input type="checkbox" name="terms" id="terms" />
 
             <span class="checkmark"></span>
 
@@ -54,12 +54,12 @@
           <button type="submit" class="btn btn-primary">
             Finalizar
           </button>
+          ou
+          <a class="btn btn-secondary" href="/admin/login">Entrar</a>
         </div>
-
-        <br>
-        <a href="/admin/login">Entrar</a>
       </form>
     </div>
   </div>
 </section>
+<script src="/js/validateValidationForm.js"></script>
 <%- include('../../partials/footer') %>

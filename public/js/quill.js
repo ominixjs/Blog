@@ -31,7 +31,8 @@ const quill = new Quill("#editor", {
     },
 });
 
-const form = document.getElementById("contentForm");
+const form = document.getElementById("form");
+
 form.addEventListener("submit", () => {
     document.getElementById("content").value = quill.root.innerHTML;
 });

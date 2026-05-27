@@ -29,36 +29,48 @@ export async function Users(req, res) {
 }
 
 export async function UserLogin(req, res) {
-    try {
-        const categories = await CategoryRepository.Categories();
-        res.render("admin/user/login", { categories });
-    } catch (err) {
-        res.redirect("/");
-    }
+    const err = req.session.err;
+    req.session.err = null;
+
+    res.render("admin/user/login", { err });
 }
 
 export async function AuthUserLogin(req, res) {
     const { email, password } = req.body;
+    const msg = {
+        passwordInvalid: "Senha com menos de 8 digitos",
+        inputError: "Senha ou usuário incorreto",
+        userError: "Usuário não encontrado",
+    };
 
     try {
         if (!email || !email.includes("@")) {
-            return res.redirect("/user/login");
+            req.session.err = msg.inputError;
+            return res.redirect("/admin/login");
         }
 
         if (!password || password.length < 8) {
-            return res.redirect("/user/login");
+            req.session.err = msg.passwordInvalid;
+            return res.redirect("/admin/login");
         }
 
+        // Busca pelo email no banco de dados
         const user = await UserRepository.User(email);
 
         // Usuário não encontrado
         if (!user) {
-            return res.redirect("/user/login");
+            req.session.err = msg.userError;
+            return res.redirect("/admin/login");
         }
 
         // Validação de senha
-        const match = bcrypt.compare(password, user.password);
-        if (!match) return res.redirect("/user/login");
+        const match = await bcrypt.compare(password, user.password);
+        console.log(match + "=====================================");
+
+        if (!match) {
+            req.session.err = msg.inputError;
+            return res.redirect("/admin/login");
+        }
 
         // Gerando token para autenticar usuario por 15min
         const token = jwt.sign({ name: user.name }, process.env.JWT_KEY, {
@@ -79,13 +91,8 @@ export async function AuthUserLogin(req, res) {
     }
 }
 
-export async function UserRegister(req, res) {
-    try {
-        const categories = await CategoryRepository.Categories();
-        res.render("admin/user/register", { categories });
-    } catch (err) {
-        res.redirect("/");
-    }
+export function UserRegister(req, res) {
+    res.render("admin/user/register");
 }
 
 export async function AuthUserRegister(req, res) {
@@ -93,18 +100,18 @@ export async function AuthUserRegister(req, res) {
 
     try {
         if (!name || !email || !email.includes("@")) {
-            return res.redirect("/user/register");
+            return res.redirect("/admin/register");
         }
 
         if (!password || password.length < 8) {
-            return res.redirect("/user/register");
+            return res.redirect("/admin/register");
         }
 
         const user = await UserRepository.User(email);
 
         // Usuario cadastrado
         if (user) {
-            return res.redirect("/user/register");
+            return res.redirect("/admin/register");
         }
 
         //==================================================

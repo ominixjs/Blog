@@ -1,6 +1,7 @@
 import express from "express";
 import ejs from "ejs";
 import cookieParser from "cookie-parser";
+import session from "express-session";
 
 //================ Database ====================
 import connection from "./src/db/connection.js";
@@ -24,11 +25,23 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//=========== Sessoẽs ===============
+app.use(
+    session({
+        secret: process.env.SESSION_KEY,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 5,
+        },
+    }),
+);
+
 //======= Arquivos estativos =====
 app.use(express.static("public"));
 
 //Necessário em hospedagens com proxy (Render, Railway, etc)
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 
 //=== Cookie temporario ===
 app.use(cookieParser());

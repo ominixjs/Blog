@@ -33,6 +33,11 @@
     transition: 0.2s;
 }
 
+.checkmark.err {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 4px var(--color-danger-light);
+}
+
 /* Check */
 .terms-checkbox input:checked + .checkmark {
     background: var(--color-primary);

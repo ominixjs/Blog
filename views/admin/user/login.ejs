@@ -25,7 +25,7 @@
         <div class="form-group terms-group">
           <label class="terms-checkbox">
 
-            <input type="checkbox" name="terms" required />
+            <input type="checkbox" name="terms" id="terms" />
 
             <span class="checkmark"></span>
 
@@ -44,9 +44,16 @@
           <button type="submit" class="btn btn-primary">
             Entrar
           </button>
+          ou
+          <a class="btn btn-secondary" href="/admin/register/">Cadastro</a>
         </div>
         <br>
-        <a href="/admin/register/">Cadastro</a>
+        <% if (err) { %>
+        <div class="message">
+          X <%= err %>
+        </div>
+        <% } %>
+
       </form>
     </div>
   </div>
