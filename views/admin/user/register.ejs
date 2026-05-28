@@ -57,6 +57,12 @@
           ou
           <a class="btn btn-secondary" href="/admin/login">Entrar</a>
         </div>
+        <br>
+        <% if (err) { %>
+        <div class="message">
+          X <%= err %>
+        </div>
+        <% } %>
       </form>
     </div>
   </div>

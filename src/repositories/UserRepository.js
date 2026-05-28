@@ -13,8 +13,8 @@ export function User(email) {
     return UserModel.findOne({ where: { email } });
 }
 
-export function UserCreate(name, email, hash) {
-    return UserModel.create({ name, email, password: hash });
+export function UserCreate(name, email, hash, term) {
+    return UserModel.create({ name, email, password: hash, term });
 }
 
 export function UserDelete(id) {

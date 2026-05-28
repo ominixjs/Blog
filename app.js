@@ -40,7 +40,7 @@ app.use(
 //======= Arquivos estativos =====
 app.use(express.static("public"));
 
-//Necessário em hospedagens com proxy (Render, Railway, etc)
+//=== Necessário em hospedagens com proxy (Render, Railway, etc) ===
 app.set("trust proxy", 1);
 
 //=== Cookie temporario ===

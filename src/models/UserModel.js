@@ -14,6 +14,10 @@ const User = connection.define("users", {
         type: Sequelize.STRING,
         allowed: false,
     },
+    terms: {
+        type: Sequelize.STRING,
+        allowed: false,
+    },
 });
 
 User.sync({ force: false });

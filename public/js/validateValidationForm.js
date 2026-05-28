@@ -3,7 +3,6 @@ function inputValidate(event, form) {
 
     // Salva inputs invalidas
     const errs = [];
-    console.log(`Inicia -------- ${errs.length}`);
 
     const inputName = document.getElementById("name");
     verifyValidation(inputName);
@@ -31,15 +30,12 @@ function inputValidate(event, form) {
         errs.push(checkmark);
     }
 
-    console.log(`Erros -------- ${errs.length}`);
     if (errs[0]) {
         inputsInvalid(errs);
         return;
     }
 
-    console.log(`Finaliza -------- ${errs.length}`);
-
-    // form.submit();
+    form.submit();
 }
 
 function inputsInvalid(errs) {

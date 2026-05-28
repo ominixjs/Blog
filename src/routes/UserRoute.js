@@ -2,6 +2,7 @@ import express from "express";
 
 //================= Middleware ==================
 import userAuth from "../middleware/userAuth.js";
+import CheckEmailLimiter from "../middleware/checkEmailLimiter.js";
 
 //=============== Controllers =====================
 import * as UsersController from "../controllers/UsersController.js";
@@ -25,7 +26,11 @@ router.post("/login/auth", UsersController.AuthUserLogin);
 router.get("/admin/register", UsersController.UserRegister);
 
 //====== Authenticar dados de registro ========
-router.post("/register/auth", UsersController.AuthUserRegister);
+router.post(
+    "/register/auth",
+    CheckEmailLimiter(),
+    UsersController.AuthUserRegister,
+);
 
 //============== Deletar Usuário ==========
 router.post("/user/delete", UsersController.UserDelete);

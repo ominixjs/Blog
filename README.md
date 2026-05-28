@@ -22,9 +22,16 @@ _Feito por OMINIXJS_
 - ✅ **ORM sequelize;**
 - ✅ **Cookie com cookie-parser;**
 - ✅ **Token com jsonwebtoken;**
-- ✅ **Senhas criptografadas com Bcrypt;**
 - ✅ **Estrtura MVC**
-- ✅ **Adicionar Validação de admin**
+- ⚙️ **Login**
+    - ✅ **Sistema de cadastro e login**
+    - ✅ **Senhas criptografadas com Bcrypt;**
+    - ✅ **Adicionar validação de admin**
+    - ✅ **Limitar solicitações**
+    - ✅ **Controle de travamento de solicitações**
+    - ✅ **Reduzir solicitações com Cache de email**
+    - ⚠️ **Confirmação de email**
+    - ⚠️ **Captcha**
 - ✅ **HTTPS**
 
 ## Status Deploy
