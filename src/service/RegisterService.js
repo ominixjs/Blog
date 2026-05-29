@@ -24,6 +24,7 @@ export default async function RegisterService(data) {
 
     //Validar email se já esta cadastrado
     const emailValidateDB = await UserRepository.User(email);
+    console.log(emailValidateDB.name + " ==================================");
     if (emailValidateDB) {
         return {
             approved: false,

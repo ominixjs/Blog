@@ -62,9 +62,8 @@ export function UserRegister(req, res) {
 export async function AuthUserRegister(req, res) {
     try {
         const result = await RegisterService(req.body);
-
-        if (!validateData.approved) {
-            req.session.err = validateData.err;
+        if (!result.approved) {
+            req.session.err = result.err;
             return res.redirect("/admin/register");
         }
 
