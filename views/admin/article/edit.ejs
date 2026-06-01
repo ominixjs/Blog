@@ -1,97 +1,88 @@
 <%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
 <section class="container">
- 
-<div class="form-container">
 
-  <div class="form-header">
-    <div>
-      <h1>📝 Editar artigo</h1>
-      <p>Atualize as informações do seu conteúdo</p>
+  <div class="form-container">
+
+    <div class="form-header">
+      <div>
+        <h1>📝 Editar artigo</h1>
+        <p>Atualize as informações do seu conteúdo</p>
+      </div>
     </div>
-  </div>
 
-  <div class="form-body">
-    <form action="/article/update" method="post" id="contentForm">
+    <div class="form-body">
+      <form action="/article/update" method="post" id="contentForm">
 
-      <input type="hidden" name="id" value="<%= id %>" />
+        <input type="hidden" name="id" value="<%= id %>" />
 
-      <!-- Título -->
-      <div class="form-group">
-        <label>📌 Título</label>
-        <input
-          type="text"
-          name="title"
-          value="<%= title %>"
-          placeholder="Digite um título atrativo..."
-          required
-        />
-      </div>
+        <!-- Título -->
+        <div class="form-group">
+          <label>📌 Título</label>
+          <input type="text" name="title" value="<%= title %>" placeholder="Digite um título atrativo..." required />
+        </div>
 
-      <!-- Slug -->
-      <div class="form-group">
-        <label>🔗 Slug</label>
-        <input
-          type="text"
-          name="slug"
-          value="<%= slug %>"
-          disabled
-        />
-      </div>
+        <!-- Slug -->
+        <div class="form-group">
+          <label>🔗 Slug</label>
+          <input type="text" name="slug" value="<%= slug %>" disabled />
+        </div>
 
-      <!-- Categoria -->
-      <div class="form-group select-wrapper">
-        <label>📂 Categoria</label>
-        <select name="category" required>
-          <option value="">Selecione uma categoria</option>
+        <!-- Categoria -->
+        <div class="form-group select-wrapper">
+          <label>📂 Categoria</label>
+          <select name="category" required>
+            <option value="">Selecione uma categoria</option>
 
-          <% categories.forEach(category => { %>
+            <% categories.forEach(category => { %>
             <option value="<%= category.id %>" <%= category.id == categoryId ? 'selected' : '' %>>
               <%= category.title %>
             </option>
-          <% }) %>
-        </select>
-      </div>
-
-      <!-- Datas -->
-      <div class="form-row">
-        <div class="form-group">
-          <label>📅 Criado em</label>
-          <input value="<%= formatDateTime(created) %>" disabled />
+            <% }) %>
+          </select>
         </div>
 
-        <div class="form-group">
-          <label>🕒 Atualizado em</label>
-          <input value="<%= formatDateTime(updated) %>" disabled />
-        </div>
-      </div>
+        <!-- Datas -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>📅 Criado em</label>
+            <input value="<%= formatDateTime(created) %>" disabled />
+          </div>
 
-      <!-- Editor -->
-      <div class="form-group">
-        <label>✏️ Conteúdo</label>
-        <div class="editor" id="editor" style="height: 700px;">
+          <div class="form-group">
+            <label>🕒 Atualizado em</label>
+            <input value="<%= formatDateTime(updated) %>" disabled />
+          </div>
+        </div>
+
+        <!-- Editor -->
+        <div class="form-group">
+          <label>✏️ Conteúdo</label>
+          <textarea name="editor" id="editor" style="height: 700px;">
           <%- body %>
+          </textarea>
+
         </div>
-        <input type="hidden" name="content" id="content" />
-      </div>
 
-      <!-- Ações -->
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">
-          💾 Salvar
-        </button>
+        <!-- Ações -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            💾 Salvar
+          </button>
 
-        <a href="/admin/articles" class="btn btn-secondary">
-          Cancelar
-        </a>
+          <a href="/admin/articles" class="btn btn-secondary">
+            Cancelar
+          </a>
 
-        <button type="button" id="clearBtn" class="btn btn-outline">
-          Limpar
-        </button>
-      </div>
+          <button type="button" id="clearBtn" class="btn btn-outline">
+            Limpar
+          </button>
+        </div>
 
-    </form>
+      </form>
+    </div>
+
   </div>
-
-</div>
 </section>
+<script src="https://cdn.tiny.cloud/1/j2dp82lo41idijvaa7enyjjrl9j9s14o6qf5fq7lh1t6je9d/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+<script src="/js/tinnyMCE.js"></script>
 <%- include('../../partials/footer') %>

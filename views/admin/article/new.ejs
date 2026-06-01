@@ -1,69 +1,59 @@
 <%- include('../../partials/head') %> <%- include('../../partials/navbar-admin') %>
 <section class="container">
-        <div class="form-container">
+  <div class="form-container">
     <div class="form-header">
-        <div>
-            <h1>📝 Novo artigo</h1>
-            <p>Crie aqui seu artigo</p>
-        </div>
+      <div>
+        <h1>📝 Novo artigo</h1>
+        <p>Crie aqui seu artigo</p>
+      </div>
     </div>
 
     <div class="form-body">
-        <form action="/article/save" method="post" id="contentForm">
-            <div class="form-group">
-                <label for="title"> <i>📌</i> Título do Conteúdo </label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Digite um título atraente para seu conteúdo..."
-                    required
-                />
-            </div>
-
-             <div class="form-group select-wrapper">
-                <label>📂 Categorias</label>
-                 <select name="category" required>
-                    <option value="">Selecione uma opção</option>
-
-                    <% categories.forEach(category => {%>
-                        <option value="<%= category.id %>" ><%= category.title %></option>
-                    <%})%>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label> <i>✏️</i> Conteúdo Principal </label>
-                <div class="editor" id="editor" style="height: 700px"></div>
-                <input type="hidden" name="content" id="content" />
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                    💾 Salvar Conteúdo
-                </button>
-                <button type="button" id="clearBtn" class="btn btn-outline">
-                    🗑️ Limpar
-                </button>
-                <button type="button" id="previewBtn" class="btn btn-secondary">
-                    👁️ Visualizar
-                </button>
-            </div>
-        </form>
-
-        <div id="previewSection" class="preview-section">
-            <h3 class="preview-title" id="previewTitle"></h3>
-            <div class="preview-content" id="previewContent"></div>
-            <button
-                type="button"
-                id="closePreview"
-                class="btn btn-outline"
-                style="margin-top: 15px"
-            >
-                Fechar Preview
-            </button>
+      <form action="/article/save" method="post" id="form">
+        <div class="form-group">
+          <label for="title"> <i>📌</i> Título do Conteúdo </label>
+          <input type="text" id="title" name="title" placeholder="Digite um título atraente para seu conteúdo..." required />
         </div>
+
+        <div class="form-group select-wrapper">
+          <label>📂 Categorias</label>
+          <select name="category" required>
+            <option value="">Selecione uma opção</option>
+
+            <% categories.forEach(category => {%>
+            <option value="<%= category.id %>"><%= category.title %></option>
+            <%})%>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label> <i>✏️</i> Conteúdo Principal </label>
+          <textarea id="editor" name="editor" style="height: 700px"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            💾 Salvar Conteúdo
+          </button>
+          <button type="button" id="clearBtn" class="btn btn-outline">
+            🗑️ Limpar
+          </button>
+          <button type="button" id="previewBtn" class="btn btn-secondary">
+            👁️ Visualizar
+          </button>
+        </div>
+      </form>
+
+      <div id="previewSection" class="preview-section">
+        <h3 class="preview-title" id="previewTitle"></h3>
+        <div class="preview-content" id="previewContent"></div>
+        <button type="button" id="closePreview" class="btn btn-outline" style="margin-top: 15px">
+          Fechar Preview
+        </button>
+      </div>
     </div>
- </div>
+  </div>
 </section>
+<script src="https://cdn.tiny.cloud/1/j2dp82lo41idijvaa7enyjjrl9j9s14o6qf5fq7lh1t6je9d/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+<script src="/js/tinnyMCE.js"></script>
 <%- include('../../partials/footer') %>

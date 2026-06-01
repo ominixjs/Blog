@@ -40,15 +40,15 @@ export async function ArticleCreate(req, res) {
 
 //================ Controle de novo artigo ============
 export async function ArticleSave(req, res) {
-    const { title, content, category } = req.body;
+    const { title, editor, category } = req.body;
 
-    if (!title || !content || !category) {
+    if (!title || !editor || !category) {
         return res.redirect("/admin/article/new");
     }
 
     //========== Salva novo artigo ===================
     try {
-        await ArticleRepository.ArticleCreate(title, content, category);
+        await ArticleRepository.ArticleCreate(title, editor, category);
         res.redirect("/admin/articles");
     } catch (err) {
         res.redirect("/admin/article/new");
@@ -99,15 +99,15 @@ export async function ArticleEdit(req, res) {
 
 //================= Controle de Artigo editado =====================
 export async function ArticleUpdate(req, res) {
-    const { id, title, content, category } = req.body;
+    const { id, title, editor, category } = req.body;
 
-    if (!title || !content || !category) {
+    if (!title || !editor || !category) {
         return res.redirect("/admin/articles");
     }
 
     //===== Altera dados do artigo ======
     try {
-        await ArticleRepository.ArticleUpdate(id, title, content, category);
+        await ArticleRepository.ArticleUpdate(id, title, editor, category);
         res.redirect("/admin/articles");
     } catch (err) {
         res.redirect("/");
