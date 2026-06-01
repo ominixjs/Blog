@@ -41,7 +41,7 @@ export async function AuthUserLogin(req, res) {
         // Gerando cookie
         res.cookie("token", result.token, {
             httpOnly: true,
-            secure: false, // ativar em HTTPS
+            secure: true, // ativar em HTTPS
             sameSite: "strict",
             maxAge: 15 * 60 * 1000,
         });

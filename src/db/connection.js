@@ -11,13 +11,13 @@ const connection = new Sequelize(
         host: process.env.DB_HOST_NAME,
         port: process.env.DB_PORT,
         dialect: process.env.DB_NAME,
-        // logging: false,
-        // dialectOptions: {
-        //     ssl: {
-        //         require: true,
-        //         rejectUnauthorized: false,
-        //     },
-        // },
+        logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
+        },
         timezone: "-03:00",
     },
 );
