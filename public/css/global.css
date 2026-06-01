@@ -26,11 +26,9 @@
 /* de 0 até 1051px */
 @media screen and (max-width: 1050px) {
     .navbar {
-        padding-inline: 5%;
-    }
-
-    .navbar .nav-links {
-        display: none;
+        align-items: start;
+        flex-direction: column;
+        padding: 1rem 5%;
     }
 
     .container {
