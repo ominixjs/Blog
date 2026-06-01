@@ -12,26 +12,27 @@ _Feito por OMINIXJS_
 ![Sequelize](https://img.shields.io/badge/Sequelize-ORM-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)
 ![Bcrypt](https://img.shields.io/badge/bcrypt-Password%20Hash-success?style=for-the-badge)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge)
+![TinyMCE](https://img.shields.io/badge/TinyMCE-Editor-3A6CF4?style=for-the-badge&logo=tinymce&logoColor=white)
 
 ![MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ## 🚀 Status Desenvolvimento
 
 - ✅ **Banco de dados com mysql;**
-- ✅ **Renderizador Html com ejs;**
 - ✅ **ORM sequelize;**
-- ✅ **Cookie com cookie-parser;**
-- ✅ **Token com jsonwebtoken;**
+- ✅ **Renderizador Html com ejs;**
+- ✅ **Editor TinnyMCE**
 - ✅ **Estrtura MVC**
+- ✅ **Token com jsonwebtoken;**
+- ✅ **Cookie com cookie-parser;**
 - ⚙️ **Login**
     - ✅ **Sistema de cadastro e login**
     - ✅ **Senhas criptografadas com Bcrypt;**
-    - ✅ **Adicionar validação de admin**
-    - ✅ **Limitar solicitações**
-    - ✅ **Controle de travamento de solicitações**
-    - ✅ **Reduzir solicitações com Cache de email**
-    - ⚠️ **Confirmação de email**
-    - ⚠️ **Captcha**
+    - ✅ **Adicionar validação de admin;**
+    - ✅ **Limitar solicitações;**
+    - ✅ **Controle de travamento de solicitações;**
+    - ✅ **Reduzir solicitações com Cache de email;**
+    - ✅ **Confirmação de email;**
 - ✅ **HTTPS**
 
 ## Status Deploy
